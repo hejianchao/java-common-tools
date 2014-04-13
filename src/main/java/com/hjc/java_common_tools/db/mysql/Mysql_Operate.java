@@ -16,13 +16,12 @@ public class Mysql_Operate {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager
-					.getConnection(
-							"jdbc:mysql://10.235.152.49:3506/bbl?characterEncoding=utf8",
-							"utf8mb4_test", "egnon2ege");
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://ip:port/dbName?characterEncoding=utf8",
+					"username", "password");
 			stmt = conn.createStatement();
 			rs = stmt
-					.executeQuery("select * from comments where app_item_id = '46581859800'");
+					.executeQuery("select * from tableName where id = '46581859800'");
 			List<String> columns = new ArrayList<String>();
 			int columnNum = rs.getMetaData().getColumnCount();
 
@@ -34,7 +33,7 @@ public class Mysql_Operate {
 			for (String str : columns) {
 				System.out.print(str + "\t");
 			}
-			String temp = "insert into bak_COMMENTs(pkid,id,content) values('%s','%s','%s')";
+			String temp = "insert into tableName(pkid,id,content) values('%s','%s','%s')";
 			String insertSql = String.format(temp, columns.get(0),
 					columns.get(1), columns.get(6));
 			System.out.println(insertSql);
