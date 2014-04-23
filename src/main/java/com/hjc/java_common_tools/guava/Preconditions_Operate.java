@@ -6,6 +6,19 @@ import org.junit.rules.ExpectedException;
 
 import com.google.common.base.Preconditions;
 
+/**
+ * 最佳实践例子：
+ * 
+ * <li>
+ * checkArgument(i >= 0, "Argument was %s but expected nonnegative", i);</li>
+ * <li>
+ * checkArgument(i < j, "Expected i < j, but %s > %s", i, j);</li> </p>
+ * 
+ * <p>
+ * <a href=
+ * "https://code.google.com/p/guava-libraries/wiki/PreconditionsExplained"
+ * >api</a>
+ */
 public class Preconditions_Operate {
 
 	@Test
@@ -116,6 +129,6 @@ public class Preconditions_Operate {
 		exceptedException
 				.expectMessage("end index (7) must not be greater than size (6)");
 
-		Preconditions.checkPositionIndexes(3,7,6);
+		Preconditions.checkPositionIndexes(3, 7, 6);
 	}
 }
