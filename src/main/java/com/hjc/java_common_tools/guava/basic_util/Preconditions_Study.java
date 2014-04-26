@@ -19,7 +19,7 @@ import com.google.common.base.Preconditions;
  * "https://code.google.com/p/guava-libraries/wiki/PreconditionsExplained"
  * >api</a>
  */
-public class Preconditions_Operate {
+public class Preconditions_Study {
 
 	@Test
 	public void Preconditions() {
