@@ -18,6 +18,15 @@ import com.google.common.base.Preconditions;
  * <a href=
  * "https://code.google.com/p/guava-libraries/wiki/PreconditionsExplained"
  * >api</a>
+ * 
+ * <pre>
+ * 
+ * 每种方法又对应了三种重载：
+ * 
+ * 1.没有错误信息
+ * 2.有直接的错误信息
+ * 3.带模板的错误信息
+ * </pre>
  */
 public class Preconditions_Study {
 
