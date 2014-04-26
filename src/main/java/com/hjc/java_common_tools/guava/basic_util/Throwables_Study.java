@@ -1,4 +1,4 @@
-package com.hjc.java_common_tools.guava;
+package com.hjc.java_common_tools.guava.basic_util;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -9,12 +9,17 @@ import org.junit.rules.ExpectedException;
 
 import com.google.common.base.Throwables;
 
-public class Throwables_Operate {
+/**
+ * 参考:http://ifeve.com/google-guava-throwables/ <br />
+ * http://www.cnblogs.com/peida/p/3160618.html <br />
+ * TODO 还需要继续深入
+ * 
+ */
+public class Throwables_Study {
 
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
 
-	// TODO 还需要继续深入
 	@Test
 	public void testA() {
 		expectedException.expect(RuntimeException.class);

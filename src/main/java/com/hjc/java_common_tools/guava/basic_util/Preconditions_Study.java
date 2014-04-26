@@ -7,12 +7,16 @@ import org.junit.rules.ExpectedException;
 import com.google.common.base.Preconditions;
 
 /**
+ * <p />
+ * 参考:http://ifeve.com/google-guava-preconditions/
+ * 
  * 最佳实践例子：
  * 
  * <li>
  * checkArgument(i >= 0, "Argument was %s but expected nonnegative", i);</li>
  * <li>
- * checkArgument(i < j, "Expected i < j, but %s > %s", i, j);</li> </p>
+ * checkArgument(i < j, "Expected i < j, but %s > %s", i, j);</li>
+ * </p>
  * 
  * <p>
  * <a href=
@@ -127,9 +131,12 @@ public class Preconditions_Study {
 
 	@Test
 	public void testCheckPositionIndexes() {
-		// checkPositionIndexes(int start, int end, int
-		// size)：检查[start, end)是一个长度为size的list，
-		// string或array合法的范围子集，即：start<end<=size
+		/**
+		 * <pre>
+		 * checkPositionIndexes(int start, int end, int size)：检查[start,end)是一个长度为size的list，
+		 * string或array合法的范围子集，即：start<end<=size
+		 * </pre>
+		 */
 		Preconditions.checkPositionIndexes(3, 6, 6);
 
 		exceptedException.expect(IndexOutOfBoundsException.class);

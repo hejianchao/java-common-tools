@@ -1,4 +1,4 @@
-package com.hjc.java_common_tools.guava;
+package com.hjc.java_common_tools.guava.basic_util;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -19,7 +19,7 @@ import com.google.common.collect.Lists;
  * @author hejianchao
  * 
  */
-public class String_Operate {
+public class String_Study {
 
 	/**
 	 * 验证{@link Joiner}的基本操作

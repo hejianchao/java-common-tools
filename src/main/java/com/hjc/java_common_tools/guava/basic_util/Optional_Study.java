@@ -1,4 +1,4 @@
-package com.hjc.java_common_tools.guava;
+package com.hjc.java_common_tools.guava.basic_util;
 
 import java.util.HashSet;
 
@@ -9,7 +9,11 @@ import com.google.common.base.Optional;
 
 /**
  * <p />
- * 最佳实践： 对返回值，采用Optional。对方法入参可以不限制。（试想：如果别人调用你的方法，还需要在调用前封装为Optional类型，会抓狂吧？）
+ * 参考: http://ifeve.com/google-guava-using-and-avoiding-null/
+ * 
+ * <p />
+ * 最佳实践： 对返回值，采用Optional。对方法入参可以不限制。（试想：如果别人调用你的方法，还需要在调用前封装为Optional类型，
+ * 会抓狂吧？不过话说返回Optional类型，用户也要if/else一下了）
  * 
  * <p />
  * Optional的最大价值，在于时刻提醒我们注意，入参和返回值，null 所表示的真正含义。
@@ -29,7 +33,7 @@ import com.google.common.base.Optional;
  * 为我们提供了一个抽象类来解决这个问题。用类Present和Absent代表值存在和不存在。
  * 
  */
-public class Optional_Operate {
+public class Optional_Study {
 
 	@Test
 	public void testPresent() {
@@ -49,5 +53,15 @@ public class Optional_Operate {
 		Assert.assertEquals(absentValue.or(-1).intValue(), -1);
 		Assert.assertEquals(absentValue.orNull(), null);
 		Assert.assertEquals(absentValue.asSet(), new HashSet<Integer>());
+	}
+
+	@Test
+	public void testFromNullable() {
+		Optional<Integer> maybeNull = Optional.fromNullable(null);
+
+		Assert.assertFalse(maybeNull.isPresent());
+		Assert.assertEquals(maybeNull.or(-1).intValue(), -1);
+		Assert.assertEquals(maybeNull.orNull(), null);
+		Assert.assertEquals(maybeNull.asSet(), new HashSet<Integer>());
 	}
 }
