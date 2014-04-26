@@ -10,9 +10,17 @@
 		<guava-version>17.0-rc1</guava-version>
 		<dbcp-version>1.2.2</dbcp-version>
 		<junit-version>4.11</junit-version>
+		<commons-lang3-version>3.1</commons-lang3-version>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3-version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
