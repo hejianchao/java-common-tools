@@ -8,20 +8,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mysql_Operate {
+	private static String MYSQL_JDBC_DRIVER_NAME = "com.mysql.jdbc.Driver";
+
+	private static String MYSQL_JDBC_URL_TEMPLATE = "jdbc:mysql://%s:%s/%s";
 
 	public static void main(String[] args) {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 
+		String ip = "localhost";
+		int port = 3306;
+		String dbName = "test";
+
+		String tableName = "hello";
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			// 实际在现在版本的Mysql(大概是5.0级以上)，用户可以不执行这句话了
+			Class.forName(MYSQL_JDBC_DRIVER_NAME);
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://ip:port/dbName?characterEncoding=utf8",
-					"username", "password");
+					String.format(MYSQL_JDBC_URL_TEMPLATE, ip, port, dbName),
+					"root", "root");
 			stmt = conn.createStatement();
-			rs = stmt
-					.executeQuery("select * from tableName where id = '46581859800'");
+			rs = stmt.executeQuery("select * from " + tableName);
 			List<String> columns = new ArrayList<String>();
 			int columnNum = rs.getMetaData().getColumnCount();
 
@@ -33,7 +41,8 @@ public class Mysql_Operate {
 			for (String str : columns) {
 				System.out.print(str + "\t");
 			}
-			String temp = "insert into tableName(pkid,id,content) values('%s','%s','%s')";
+			String temp = "insert into " + tableName
+					+ "(pkid,id,content) values('%s','%s','%s')";
 			String insertSql = String.format(temp, columns.get(0),
 					columns.get(1), columns.get(6));
 			System.out.println(insertSql);
@@ -42,13 +51,7 @@ public class Mysql_Operate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				rs.close();
-				stmt.close();
-				conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			DBUtil.closeResource(rs, stmt, conn);
 		}
 	}
 }

@@ -17,7 +17,7 @@ class Task implements Runnable {
 
 	@Override
 	public void run() {
-		int number0 = Integer.parseInt("TTT");
+		Integer.parseInt("TTT");
 	}
 }
 

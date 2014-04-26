@@ -15,7 +15,6 @@ public class BulkLoadData2MySQL {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 1; i <= 10; i++) {
 			for (int j = 0; j <= 1; j++) {
-
 				builder.append("8abc" + i);
 				builder.append("\t");
 				builder.append(4 + 1);

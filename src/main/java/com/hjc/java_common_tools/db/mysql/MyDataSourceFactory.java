@@ -2,7 +2,6 @@ package com.hjc.java_common_tools.db.mysql;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import javax.sql.DataSource;

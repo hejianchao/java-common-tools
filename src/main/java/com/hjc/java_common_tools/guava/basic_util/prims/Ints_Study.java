@@ -1,4 +1,4 @@
-package com.hjc.java_common_tools.guava.prims;
+package com.hjc.java_common_tools.guava.basic_util.prims;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import com.google.common.primitives.Ints;
 
 /**
  * 
- * api:http://ifeve.com/google-guava-primitives/
+ * 参考:http://ifeve.com/google-guava-primitives/
  */
 public class Ints_Study {
 
@@ -46,5 +46,12 @@ public class Ints_Study {
 		// 给定值在数组最后出现的索引，若不包含此值返回-1
 		Assert.assertEquals(5, Ints.lastIndexOf(aAndBArray, 5));
 		Assert.assertEquals(-1, Ints.lastIndexOf(aAndBArray, 555));
+
+		// 数组中最小（大）的值
+		Assert.assertEquals(3, Ints.min(aAndBArray));
+		Assert.assertEquals(9, Ints.max(aAndBArray));
+
+		// 把数组用给定分隔符连接为字符串
+		Assert.assertEquals("3,5,7,9,3,5,7,9", Ints.join(",", aAndBArray));
 	}
 }

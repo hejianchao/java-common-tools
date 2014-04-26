@@ -1,4 +1,4 @@
-package com.hjc.java_common_tools.guava;
+package com.hjc.java_common_tools.guava.basic_util;
 
 import org.junit.Rule;
 import org.junit.Test;
