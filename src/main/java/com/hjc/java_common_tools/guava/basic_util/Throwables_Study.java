@@ -1,7 +1,6 @@
 package com.hjc.java_common_tools.guava.basic_util;
 
-import java.io.InputStream;
-import java.net.URL;
+import java.io.IOException;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,22 +17,42 @@ import com.google.common.base.Throwables;
 public class Throwables_Study {
 
 	@Rule
-	public ExpectedException expectedException = ExpectedException.none();
+	public ExpectedException thrown = ExpectedException.none();
 
 	@Test
-	public void testA() {
-		expectedException.expect(RuntimeException.class);
-		expectedException
-				.expectMessage("java.net.UnknownHostException: hejianchao.test_hello");
+	public void testThrowables() {
+		thrown.expect(RuntimeException.class);
 		try {
-			URL url = new URL("http://hejianchao.test_hello");
-			final InputStream in = url.openStream();
-			in.close();
+			throw new Exception();
 		} catch (Throwable t) {
-			// 注意此处打印的错误信息详情
-			String errorDetail = Throwables.getStackTraceAsString(t);
-			System.out.println(errorDetail);
+			String ss = Throwables.getStackTraceAsString(t);
+			System.out.println("error msg:" + ss);
+			Throwables.propagate(t);
+		}
+	}
 
+	@Test
+	public void call() throws IOException {
+		thrown.expect(IOException.class);
+		try {
+			throw new IOException();
+		} catch (Throwable t) {
+			Throwables.propagateIfInstanceOf(t, IOException.class);
+
+			// 不会执行throw语句，因为上一句匹配到了IOException，所以已经抛出了异常。
+			throw Throwables.propagate(t);
+		}
+	}
+
+	@Test
+	public void call2() throws IOException {
+		thrown.expect(RuntimeException.class);
+		try {
+			throw new IOException();
+		} catch (Throwable t) {
+			Throwables.propagateIfInstanceOf(t, RuntimeException.class);
+
+			// 会执行throw语句
 			throw Throwables.propagate(t);
 		}
 	}

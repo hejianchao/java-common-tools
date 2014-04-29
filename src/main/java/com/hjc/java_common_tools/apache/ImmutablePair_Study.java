@@ -1,14 +1,10 @@
 package com.hjc.java_common_tools.apache;
 
-import java.util.List;
-
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import com.google.common.primitives.Ints;
 
 /**
  * 用Pair 来较好的封装tuple的用法。

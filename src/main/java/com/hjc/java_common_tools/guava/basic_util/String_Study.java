@@ -1,7 +1,5 @@
 package com.hjc.java_common_tools.guava.basic_util;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,7 +8,6 @@ import org.junit.Test;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-import com.google.common.base.Throwables;
 import com.google.common.collect.Lists;
 
 /**
