@@ -11,6 +11,7 @@
 		<dbcp-version>1.2.2</dbcp-version>
 		<junit-version>4.11</junit-version>
 		<commons-lang3-version>3.1</commons-lang3-version>
+		<commons-io-version>2.4</commons-io-version>
 	</properties>
 
 	<dependencies>
@@ -20,6 +21,14 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3-version}</version>
 		</dependency>
+
+		<!-- apache io utils begin -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io-version}</version>
+		</dependency>
+		<!-- apache io utils end -->
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
