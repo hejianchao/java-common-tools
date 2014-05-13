@@ -9,7 +9,8 @@ import org.junit.rules.ExpectedException;
 /**
  * 用Pair 来较好的封装tuple的用法。
  * 
- * Since: Lang 3.0
+ * https://commons.apache.org/proper/commons-lang/javadocs/api-release/
+ * 从Lang 3.2开始，支持MutableTriple<L,M,R>
  */
 public class ImmutablePair_Study {
 
