@@ -7,7 +7,9 @@ import org.apache.commons.configuration.PropertiesConfiguration;
  * 从CONF_FILE_NAME加载配置文件（针对普通配置文件，非xml,json等格式的）。main方法中有基础用法。
  * 如果需要读取xml配置文件，可以通过XMLPropertiesConfiguration 进行操作。
  * 
- * maven 依赖：
+ * 可以参考：http://h819.iteye.com/blog/293372
+ * 
+ * 如果读properties文件不想产生对外jar依赖，可以直接使用java的Properties类，稍显麻烦。 maven 依赖：
  * 
  * <pre>
  * 		<dependency>
@@ -23,16 +25,19 @@ public final class PropertyLoader {
 	private static String CONF_FILE_NAME = "env.properties";
 
 	static {
+		// 注意路径默认指向的是classpath的根目录。这里没有采用new
+		// PropertiesConfiguration(CONF_FILE_NAME)的方式，是为了可以在加载文件前，设置一些参数（如编码，分隔符等）
+		PropertyLoader.CONF = new PropertiesConfiguration();
+		CONF.setFileName(CONF_FILE_NAME);
+		PropertyLoader.CONF.setEncoding("utf-8");
 		try {
-			// 注意路径默认指向的是classpath的根目录
-			PropertyLoader.CONF = new PropertiesConfiguration(CONF_FILE_NAME);
-			PropertyLoader.CONF.setEncoding("utf-8");
+			CONF.load();
 			if (PropertyLoader.CONF.isEmpty()) {
 				throw new IllegalArgumentException(
 						"System Error: properties cannot be empty file !");
 			}
 		} catch (ConfigurationException e) {
-			throw new RuntimeException("exception while load file:"
+			throw new RuntimeException("error while load file:"
 					+ CONF_FILE_NAME, e);
 		}
 	}
@@ -80,6 +85,7 @@ public final class PropertyLoader {
 		// 注意：double精度会有损失
 		System.out.println(PropertyLoader.getDouble("double_key"));
 		System.out.println(PropertyLoader.getString("string_key"));
+		System.out.println(PropertyLoader.getString("string_key2"));
 
 		System.out.println(PropertyLoader.getString("bad_key", "I am hjc"));
 	}
