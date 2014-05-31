@@ -13,6 +13,7 @@
 		<commons-lang3-version>3.1</commons-lang3-version>
 		<commons-io-version>2.4</commons-io-version>
 		<commons-configuration>1.9</commons-configuration>
+		<jcommander-version>1.35</jcommander-version>
 	</properties>
 
 	<dependencies>
@@ -71,6 +72,14 @@
 		</dependency>
 		<!-- gson end -->
 
+		<!-- jcommander begin -->
+		<!-- 用于对java应用的命令行参数进行解析的工具类 -->
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>${jcommander-version}</version>
+		</dependency>
+		<!-- jcommander end -->
 
 		<dependency>
 			<groupId>junit</groupId>
